@@ -14,6 +14,16 @@ protocol EntryPresenterDelegate: AnyObject {
 }
 
 class EKRootViewController: UIViewController {
+
+    @available(iOS 27.1, *)
+    override var preferredVerticalBarBehavior: UIVerticalBarBehavior { .disabled }
+    
+    @available(iOS 27.1, *)
+        override var childForPreferredVerticalBarBehavior: UIViewController? {
+            // By returning nil, you tell UIKit NOT to ask the top view controller.
+            // It will strictly use this navigation controller's behavior (.disabled) instead.
+            return nil
+        }
     
     // MARK: - Props
     
